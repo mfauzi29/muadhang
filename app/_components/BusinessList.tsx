@@ -19,8 +19,8 @@ interface BusinessData {
     restoType: string;
     slug: string;
     workingHours: string;
-    review:{
-        star:number;
+    review: {
+        star: number;
     }[]; // Add the 'review' property as an array
 }
 
@@ -32,7 +32,6 @@ interface BusinessResponse {
 interface BusinessItemProps {
     business: BusinessData;
 }
-
 
 interface BusinessResponse {
     restaurants: BusinessData[];
@@ -63,18 +62,12 @@ function BusinessList() {
         <div className='mt-5'>
             <h2 className='font-bold text-2xl'>Popular {category} Restaurants</h2>
             <h2 className='font-bold text-primary'>{businessList?.length}</h2>
-
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7 mt-3'>
-                {!loading? businessList.map((restaurants, index) => (
-                    // Add your code here
-                    <BusinessItem key={index} 
-                    business={restaurants}
-                    />
-                )):
-                [1,2,3,4,5,6].map((item, index) => (
-                    <BusinessItemSkelton/>
-                ))    
-                }
+                {!loading ? businessList.map((restaurants, index) => (
+                    <BusinessItem key={index} business={restaurants} />
+                )) : Array.from({ length: 6 }, (_, index) => (
+                    <BusinessItemSkelton key={index} />
+                ))}
             </div>
         </div>
     );
