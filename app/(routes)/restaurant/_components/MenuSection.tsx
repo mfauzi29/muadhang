@@ -104,9 +104,8 @@ const MenuSection: React.FC<MenuSectionProps> = ({ restaurant }) => {
                     <h2 className='font-extra-bold text-lg'>{menuItemList[0]?.category}</h2>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
                         {menuItemList?.map((item, index) => (
-                            <div className='p-2 flex gap-4 border rounded-xl hover:border-primary cursor-pointer'>
+                            <div key={item.id} className='p-2 flex gap-4 border rounded-xl hover:border-primary cursor-pointer'>
                                 <Image
-                                key={index}
                                 src={item?.productImage?.url}
                                 alt={item.name}
                                 width={150}
