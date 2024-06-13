@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "./_components/Header";
 import Provider from "./Provider";
+import '@smastrom/react-rating/style.css';
 
 const inter = Inter({ subsets: ["latin"] });
 
