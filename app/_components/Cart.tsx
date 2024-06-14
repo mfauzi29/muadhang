@@ -5,6 +5,7 @@ import React, { useContext } from 'react'
 import GlobalApi from '../_utils/GlobalApi';
 import { toast } from 'sonner';
 import { CartUpdateContext } from '../_context/CartUpdateContext';
+import Link from 'next/link';
 
 
 interface CartProps {
@@ -46,7 +47,7 @@ const Cart: React.FC<CartProps> = ({ cart }) => { {
                     My Order
                 </h2>
                 {cart&&cart.map((item, index) => (
-                    <div key={index} className='flex justify-between gap-8 items-center'>
+                    <div key={index} className='flex justify-between gap-16 items-center'>
                         <div className='flex gap-2 items-center'>
                         <Image
                         src={item?.productImage}
@@ -59,14 +60,15 @@ const Cart: React.FC<CartProps> = ({ cart }) => { {
                         </div>
                         <h2 className='font-bold'>
                             Rp{item?.price}
-                            <X className='h-4 w-4 text-red-500'
+                            <X className='h-4 w-4 text-red-500 cursor-pointer'
                             onClick={()=>RemoveItemFromCart(item.id)}
                             />
                         </h2>
                         
                     </div>    
                 ))}
-                <Button>Checkout Now Rp{CalculateCartAmount()}</Button>
+                <Link href={'/checkout?restaurant='+cart[0]?.restaurant?.name} className='w-full' />
+                <Button className='w-full'>Checkout Now Rp{CalculateCartAmount()}</Button>
             </div>
         </div>
     )
